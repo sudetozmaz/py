@@ -1,0 +1,1 @@
+The name says it all, this is a simple python script, which outputs the number with the longest streak and consecutive while being the same. This code will print the number, the frequency of that number, and the first starting index of the streak.
