@@ -425,3 +425,89 @@ print("çilek".encode("cp1254")) # b'\xe7ilek'
 a = "woo\tsa\tl"
 print(a.expandtabs(10)) # "woo       sa        l"
 ```
+
+### str.maketrans() / translate()
+```python
+kaynak = "şçöğüıŞÇÖĞÜİ"
+hedef  = "scoguiSCOGUI"
+
+çeviri_tablosu = str.maketrans(kaynak, hedef)
+
+metin = "Bildiğiniz gibi, internet üzerinde bazen Türkçe karakterleri kullanamıyoruz."
+
+print(metin.translate(çeviri_tablosu))
+```
+
+### isalpha()
+```python
+a = "woosal"
+print(a.isalpha()) # True
+```
+```python
+a = "woosal1337"
+print(a.isalpha()) # False
+```
+
+### isdigit()
+```python
+a = "1337"
+print(a.isdigit()) # True
+```
+```python
+a = "1337!"
+print(a.isdigit()) # False
+```
+
+### isalnum()
+```python
+a = "woosal1337"
+print(a.isalnum()) # True
+```
+```python
+a = "woosal1337!"
+print(a.isalnum()) # False
+```
+
+### isdecimal()
+```python
+a = "1337"
+print(a.isdecimal()) # True
+```
+```python
+a = "1337.1337"
+print(a.isdecimal()) # False
+```
+
+### isidentifier()
+```python
+print("random_name".isidentifier()) # True
+```
+```python
+print("1337name".isidentifier())) # False
+```
+
+### isnumeric()
+```python
+print("1337".isnumeric()) # True
+```
+```python
+print("13.37".isnumeric()) # False
+```
+
+### isspace()
+```python
+print(" ".isspace()) # True
+```python
+print("           ".isspace()) # True
+```
+```python
+print("wosoal".isspace()) # False
+```
+
+### isprintable()
+```python
+print("woosal".isprintable()) # True
+```
+```python
+print("\n".isprintable()) # False
+```
