@@ -517,3 +517,10 @@ print("\n".isprintable()) # False
 ```python
 print("my name is %s" %"vusal")
 ```
+
+### d
+```python
+print("i am %d years old" %19)
+```
+
+
