@@ -511,3 +511,9 @@ print("woosal".isprintable()) # True
 ```python
 print("\n".isprintable()) # False
 ```
+
+## `%`
+### s
+```python
+print("my name is %s" %"vusal")
+```
