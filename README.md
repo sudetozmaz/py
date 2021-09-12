@@ -523,4 +523,27 @@ print("my name is %s" %"vusal")
 print("i am %d years old" %19)
 ```
 
+### o (octal)
+```python
+print("%i sayısının sekizli düzendeki karşılığı %o sayısıdır." %(10, 10)) # 12
+```
 
+### x (hexadecimal)
+```python
+print("%i sayısının onaltılı düzendeki karşılığı %x sayısıdır." %(20, 20)) # 14
+```
+
+### X (hexadecimal)
+```python
+print("%i sayısının onaltılı düzendeki karşılığı %X sayısıdır." %(10, 10)) # A
+```
+
+### f (float)
+```python
+print("Dolar %f TL ..." %8.567) # 8.567000
+```
+
+### c
+```python
+print("%c" %65) # A
+```
