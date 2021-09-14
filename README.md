@@ -547,3 +547,141 @@ print("Dolar %f TL ..." %8.567) # 8.567000
 ```python
 print("%c" %65) # A
 ```
+
+## `lists []`
+### append()
+```python
+liste = ["elma", "armut", "çilek"]
+liste.append("erik")
+```
+
+###  extend()
+```python
+li1 = [1, 3, 4]
+li2 = [10, 11, 12]
+li1. extend(li2) # [1, 3, 4, 10, 11, 12]
+```
+
+### insert()
+```python
+liste = ["elma", "armut", "çilek"]
+liste.insert(0, "erik")
+print(liste)
+```
+
+### remove()
+```python
+liste = ["elma", "armut", "çilek"]
+liste.remove("elma")
+print(liste) # ["armut", "çilek"]
+```
+
+### reverse()
+```python
+liste = ["elma", "armut", "çilek"]
+liste.reverse()
+print(liste) # ["çilek", "armut", "elma"]
+```
+```python
+liste = ["elma", "armut", "çilek"]
+liste = liste[::-1]
+print(liste) # ["çilek", "armut", "elma"] 
+```
+```python
+liste = ["elma", "armut", "çilek"]
+reversed(liste)
+print(list(liste)) # ["çilek", "armut", "elma"]
+
+print(*liste) # çilek armut elma
+```
+
+### pop()
+```python
+liste = ["elma", "armut", "çilek"]
+liste.pop()
+print(liste) # ["elma", "armut"]
+```
+```python
+liste = ["elma", "armut", "çilek"]
+print(liste.pop(1))
+print(liste) # ["elma", "çilek"]
+```
+
+### sort()
+```python
+members = ['Ahmet', 'Mehmet', 'Ceylan', 'Seyhan', 'Mahmut', 'Zeynep',
+          'Abdullah', 'Kadir', 'Kemal', 'Kamil', 'Selin', 'Senem',
+          'Sinem', 'Tayfun', 'Tuna', 'Tolga']
+members.sort()
+print(members)
+```
+```python
+digits = [1, 0, -1, 4, 10, 3, 6]
+digits.sort()
+print(digits)
+```
+```python
+digits = [1, 0, -1, 4, 10, 3, 6]
+digits.sort(reverse=True)
+print(digits)
+```
+```python
+harfler = "abcçdefgğhıijklmnoöprsştuüvyz"
+çevrim = {harf: harfler.index(harf) for harf in harfler}
+
+isimler = ["ahmet", "ışık", "ismail", "çiğdem", "can", "şule"]
+isimler.sort(key=lambda x: çevrim.get(x[0]))
+
+print(isimler)
+```
+
+### index()
+```python
+liste = ["elma", "armut", "çilek"]
+print(liste.index("elma")) # 0
+```
+
+### count()
+```python
+liste = ["elma", "armut", "elma", "çilek"]
+print(liste.count("elma")) # 2
+```
+
+### copy()
+```python
+liste1 = ["ahmet", "mehmet", "özlem"]
+liste2 = liste1[:]
+liste2.pop()
+
+print(liste1) # ["ahmet", "mehmet", "özlem"]
+print(liste2) # ["ahmet", "mehmet"]
+```
+```python
+liste1 = ["ahmet", "mehmet", "özlem"]
+liste2 = list(list1)
+liste2.pop()
+
+print(liste1) # ["ahmet", "mehmet", "özlem"]
+print(liste2) # ["ahmet", "mehmet"]
+```
+```python
+liste1 = ["ahmet", "mehmet", "özlem"]
+liste2 = liste1.copy()
+liste2.pop()
+
+print(liste1) # ["ahmet", "mehmet", "özlem"]
+print(liste2) # ["ahmet", "mehmet"]
+```
+
+### clear()
+```python
+liste = [1, 2, 3, 5, 10, 20, 30, 45]
+liste.clear()
+print(liste)
+```
+
+### count()
+```python
+demet = ("elma", "armut", "elma", "çilek")
+print(demet.count("elma"))
+```
