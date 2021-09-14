@@ -685,3 +685,27 @@ print(liste)
 demet = ("elma", "armut", "elma", "çilek")
 print(demet.count("elma"))
 ```
+
+## counting systems
+### bin()
+```python
+print(bin(2)[2:]) # 10
+```
+
+### hex()
+```python
+print(hex(10)[2:]) # a
+```
+
+### oct()
+```python
+print(oct(10)[2:]) # 12
+```
+
+### int() (universal to all)
+```python
+print(int('1100', 2)) # 12
+```
+```python
+print(int('1100', 16)) # 4352
+```
