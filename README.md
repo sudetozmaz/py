@@ -825,3 +825,74 @@ print(sum(a)) # 198
 a = [10, 20, 43, 45 , 77, 2, 0, 1]
 print(sum(a, 10)) # 208
 ```
+
+## `dictionaries {}`
+### keys()
+```python
+sözlük = {"a": 0,
+          "b": 1,
+          "c": 2,
+          "d": 3}
+
+print(sözlük.keys()) # dict_keys(['a', 'b', 'c', 'd'])
+print(list(sözlük.keys())) # ['a', 'b', 'c', 'd']
+print("".join(sözlük.keys())) # abcd
+```
+
+### values()
+```python
+sözlük = {"a": 0,
+          "b": 1,
+          "c": 2,
+          "d": 3}
+
+print(sözlük.keys()) # dict_values(['0', '1', '2', '3'])
+print(list(sözlük.keys())) # ['0', '1', '2', '3']
+print("".join(sözlük.keys())) # 0123
+```
+
+### items()
+```python
+sözlük = {"a": '0',
+          "b": '1',
+          "c": '2',
+          "d": '3'}
+
+print(sözlük.items()) # dict_items([('a', '0'), ('b', '1'), ('c', '2'), ('d', '3')])
+print(list(sözlük.items())) # [('a', '0'), ('b', '1'), ('c', '2'), ('d', '3')]
+```
+
+### get()
+```python
+ing_sözlük = {"dil": "language", "bilgisayar": "computer", "masa": "table"}
+sorgu = input("Lütfen anlamını öğrenmek istediğiniz kelimeyi yazınız:")
+print(ing_sözlük.get(sorgu, "Bu kelime veritabanımızda yoktur!")) # False return statement: "Bu kelime veritabanımızda yoktur!"
+```
+
+### clear()
+```python
+lig = {"şampiyon": "Adana Demirspor", "ikinci": "Mersin İdman Yurdu",
+       "üçüncü": "Adana Gençlerbirliği"}
+lig.clear()
+print(lig) # {}
+```
+```python
+lig = {"şampiyon": "Adana Demirspor", "ikinci": "Mersin İdman Yurdu",
+       "üçüncü": "Adana Gençlerbirliği"}
+del lig
+print(lig) # NameError: name 'lig' is not defined
+```
+
+### copy()
+```python
+lig = {"şampiyon": "Adana Demirspor", "ikinci": "Mersin İdman Yurdu", "üçüncü": "Adana Gençlerbirliği"}
+lig2 = lig.copy() 
+print(lig2) # {"şampiyon": "Adana Demirspor", "ikinci": "Mersin İdman Yurdu", "üçüncü": "Adana Gençlerbirliği"}
+```
+
+### fromkeys()
+```python
+elemanlar = "Ahmet", "Mehmet", "Can"
+adresler = dict.fromkeys(elemanlar, "Kadıköy")
+print(adresler) # {'Ahmet': 'Kadıköy', 'Mehmet': 'Kadıköy', 'Can': 'Kadıköy'}
+```
