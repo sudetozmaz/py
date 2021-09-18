@@ -942,3 +942,183 @@ yeni_stok = {"sucuk": 6}
 print(stok.update(yeni_stok)) # None
 print(stok) # {'elma': 5, 'armut': 10, 'peynir': 6, 'sosis': 15, 'sucuk': 6}
 ```
+
+## `set()`
+```python
+kardiz = "Python Programlama Dili"
+kume = set(kardiz)
+
+print(kume) # {'g', 'h', ' ', 'a', 't', 'r', 'P', 'm', 'D', 'n', 'i', 'l', 'o', 'y'}
+```
+
+```python
+liste = ["elma", "armut", "elma", "kebap", "şeker", "armut","çilek", "ağaç", "şeker", "kebap", "şeker"]
+
+print(set(liste)) # {'ağaç', 'şeker', 'çilek', 'armut', 'kebap', 'elma'}
+```
+
+```python
+print(dir(set))
+#['__and__', '__class__', '__contains__', '__delattr__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', #'__iand__', '__init__', '__init_subclass__', '__ior__', '__isub__', '__iter__', '__ixor__', '__le__', '__len__', '__lt__', '__ne__', '__new__', '__or__', #'__rand__', '__reduce__', '__reduce_ex__', '__repr__', '__ror__', '__rsub__', '__rxor__', '__setattr__', '__sizeof__', '__str__', '__sub__', '__subclasshook__', #'__xor__', 'add', 'clear', 'copy', 'difference', 'difference_update', 'discard', 'intersection', 'intersection_update', 'isdisjoint', 'issubset', 'issuperset', #'pop', 'remove', 'symmetric_difference', 'symmetric_difference_update', 'union', 'update']
+```
+
+##### add()
+```python
+a = {1,2,3,4,5}
+a.add(7)
+a.add(6)
+
+print(a) # {1, 2, 3, 4, 5, 6, 7}
+```
+
+##### clear()
+```python
+a = {1,2,3,4,5}
+a.clear()
+
+print(a) # set()
+```
+
+##### copy()
+```python
+a = {1,2,3,4,5}
+b = a.copy()
+
+print(b) # {1,2,3,4,5}
+```
+
+##### difference()
+```python
+a = {1,2,3,4,5}
+b = {1,2,3,4,5,6}
+
+print(a.difference(b)) # set()
+print(b.difference(a)) # {6}
+```
+
+##### difference_update()
+```python
+a = {1,2,3,4,5}
+b = {1,2,3,4,5,6}
+
+print(a.difference_update(b)) # None
+print(a) # set()
+```
+
+```python
+a = {1,2,3,4,5}
+b = {1,2,3,4,5,6}
+
+print(b.difference_update(a)) # None
+print(b) # {6}
+```
+
+##### discard()
+```python
+sets = set([10, 20, 26, 41, 54, 20])
+sets.discard(20)
+
+print(sets) # {41, 10, 26, 54}
+```
+
+##### intersection()
+```python
+A = {2, 3, 5}
+B = {1, 3, 5}
+
+print(A.intersection(B)) # {3, 5}
+```
+
+###### intersection_update()
+```python
+A = {2, 3, 5}
+B = {1, 3, 5}
+
+print(A.intersection_update(B)) # None
+print(A) # {3, 5}
+```
+
+##### isdisjoint()
+```python
+A = {1, 2, 3, 4}
+B = {5, 6, 7}
+C = {4, 5, 6}
+
+print('Are A and B disjoint?', A.isdisjoint(B)) # True
+print('Are A and C disjoint?', A.isdisjoint(C)) # False
+```
+
+##### issubset()
+```python
+A = {1, 2, 3}
+B = {1, 2, 3, 4, 5}
+C = {1, 2, 4, 5}
+
+print(A.issubset(B)) # True
+print(B.issubset(A)) # False
+print(A.issubset(C)) # False
+print(C.issubset(B)) # True
+```
+
+##### issuperset()
+```python
+A = {1, 2, 3}
+B = {1, 2, 3, 4, 5}
+C = {1, 2, 4, 5}
+
+print(A.issuperset(B)) # False
+print(B.issuperset(A)) # True
+print(A.issuperset(C)) # False
+print(C.issuperset(B)) # False
+```
+
+##### pop()
+```python
+A = {1, 2, 3}
+A.pop()
+
+print(A) # {2, 3}
+```
+
+##### remove()
+```python
+A = {1, 2, 3}
+A.remove(2)
+
+print(A) # {1, 3}
+```
+
+##### symmetric_difference()
+```python
+A = {2, 4, 6, 8, 10}
+B = {1, 3, 5, 7, 9}
+
+
+print(B.symmetric_difference(A)) # {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+print(A.symmetric_difference(B)) # {1, 2, 3, 4, 5, 6, 7, 8, 9, 10} 
+```
+
+##### union()
+```python
+A = {2, 3, 5}
+B = {1, 3, 5}
+
+print(A | B) # {1, 2, 3, 5} 
+print(A.union(B)) # {1, 2, 3, 5}
+```
+
+##### update()
+```python
+A = {'a', 'b'}
+B = {1, 2, 3}
+
+print(A.update(B)) # None
+print(A) # {1, 2, 'b', 3, 'a'}
+```
+
+##### frozenset()
+```python
+dondurulmuş = frozenset(["elma", "armut", "ayva"])
+print(dir(dondurulmuş))
+#['__and__', '__class__', '__contains__', '__delattr__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', #'__init__', '__init_subclass__', '__iter__', '__le__', '__len__', '__lt__', '__ne__', '__new__', '__or__', '__rand__', '__reduce__', '__reduce_ex__', #'__repr__', '__ror__', '__rsub__', '__rxor__', '__setattr__', '__sizeof__', '__str__', '__sub__', '__subclasshook__', '__xor__', 'copy', 'difference', #'intersection', 'isdisjoint', 'issubset', 'issuperset', 'symmetric_difference', 'union']
+```
