@@ -896,3 +896,49 @@ elemanlar = "Ahmet", "Mehmet", "Can"
 adresler = dict.fromkeys(elemanlar, "Kadıköy")
 print(adresler) # {'Ahmet': 'Kadıköy', 'Mehmet': 'Kadıköy', 'Can': 'Kadıköy'}
 ```
+
+### pop()
+```python
+sepet = {"meyveler": ("elma", "armut"), "sebzeler": ("pırasa", "fasulye"),
+"içecekler": ("su", "kola", "ayran")}
+
+print(sepet.pop("meyveler")) # ("elma", "armut")
+print(sepet) # {'sebzeler': ('pırasa', 'fasulye'), 'içecekler': ('su', 'kola', 'ayran')}
+
+print(sepet.pop("meyveler", "There is not anything named in the dictionary!") # There is not anything named in the dictionary!
+```
+
+### popitem()
+```python
+sepet = {"meyveler": ("elma", "armut"), "sebzeler": ("pırasa", "fasulye")}
+
+print(sepet.popitem()) # ("sebzeler": ("pırasa", "fasulye"))
+print(sepet) # {"meyveler": ("elma", "armut")}
+```
+
+### setdefault()
+```python
+sepet = {"meyveler": ("elma", "armut"), "sebzeler": ("pırasa", "fasulye")}
+
+print(sepet.setdefault("woosal", ("1","3","3","7"))) # ('1', '3', '3', '7')
+print(sepet) # {'meyveler': ('elma', 'armut'), 'sebzeler': ('pırasa', 'fasulye'), 'woosal': ('1', '3', '3', '7')}
+```
+
+### update()
+```python
+stok = {"elma": 5, "armut": 10, "peynir": 6, "sosis": 15}
+
+yeni_stok = {"elma": 3, "armut": 20, "peynir": 8, "sosis": 4, "sucuk": 6}
+
+print(stok.update(yeni_stok)) # None
+print(stok) # {'elma': 3, 'armut': 20, 'peynir': 8, 'sosis': 4, 'sucuk': 6}
+```
+
+```python
+stok = {"elma": 5, "armut": 10, "peynir": 6, "sosis": 15}
+
+yeni_stok = {"sucuk": 6}
+
+print(stok.update(yeni_stok)) # None
+print(stok) # {'elma': 5, 'armut': 10, 'peynir': 6, 'sosis': 15, 'sucuk': 6}
+```
