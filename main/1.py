@@ -2,6 +2,7 @@
 
 #name = "     vusal ismayilov celebi      "
 
+
 # basic string manipulations:
     print(name.title())
     print(name.upper())

@@ -1,6 +1,8 @@
 # Enter your code here. Read input from STDIN. Print output to STDOUT
 from collections import Counter
 
+
+# def main():
 def main():
     
     total_sum = 0

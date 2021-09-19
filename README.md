@@ -57,7 +57,7 @@ print("Hello,\aWorld!")
 
 ### \r
 ```python
-print("Hello,\rWorld!)
+print("Hello,\rWorld!")
 ```
 
 ### \v
@@ -176,7 +176,7 @@ help()
 ### replace()
 ```python
 a = "hello"
-print(a.replace("lo", "lol")
+print(a.replace("lo", "lol"))
 ```
 
 ### split()
@@ -188,7 +188,7 @@ print(a.split(" ", 1)) #["hello", "world !"]
 ### rsplit()
 ```python
 a = "hello world !"
-print(a.rsplit(" ", 1) #['hello world', '!']
+print(a.rsplit(" ", 1)) #['hello world', '!']
 ```
 
 ### splitlines() a.k.a split("\n") (a bit different)
@@ -325,7 +325,7 @@ print(a.index("l")) # 2
 ```
 ```python
 a = "Hello, World!"
-print(a.index("l", 6) # 10
+print(a.index("l", 6)) # 10
 ```
 
 ### rindex()
@@ -483,7 +483,7 @@ print(a.isdecimal()) # False
 print("random_name".isidentifier()) # True
 ```
 ```python
-print("1337name".isidentifier())) # False
+print("1337name".isidentifier()) # False
 ```
 
 ### isnumeric()
@@ -497,9 +497,12 @@ print("13.37".isnumeric()) # False
 ### isspace()
 ```python
 print(" ".isspace()) # True
+```
+
 ```python
 print("           ".isspace()) # True
 ```
+
 ```python
 print("wosoal".isspace()) # False
 ```
@@ -712,8 +715,8 @@ print(int('1100', 16)) # 4352
 
 ### pow()
 ```python
-print(pow(2, 3) # 8
-print(pow(2, 3, 8) # (2**3) % 8 = 0
+print(pow(2, 3)) # 8
+print(pow(2, 3, 8)) # (2**3) % 8 = 0
 ```
 
 ## `imaginary / complex values`
@@ -905,7 +908,7 @@ sepet = {"meyveler": ("elma", "armut"), "sebzeler": ("pırasa", "fasulye"),
 print(sepet.pop("meyveler")) # ("elma", "armut")
 print(sepet) # {'sebzeler': ('pırasa', 'fasulye'), 'içecekler': ('su', 'kola', 'ayran')}
 
-print(sepet.pop("meyveler", "There is not anything named in the dictionary!") # There is not anything named in the dictionary!
+print(sepet.pop("meyveler", "There is not anything named in the dictionary!")) # There is not anything named in the dictionary!
 ```
 
 ### popitem()
