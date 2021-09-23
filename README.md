@@ -2013,3 +2013,447 @@ print(len('istihza'))  # 7
 ```python
 print(len([1, 4, 5, 3, 2, 9, 10]))  # 7
 ```
+
+### map()
+
+```python
+l = [1, 4, 5, 4, 2, 9, 10]
+
+
+def squared(n):
+    return n ** 2
+
+
+print(list(map(squared, l)))  # [1, 16, 25, 16, 4, 81, 100]
+```
+
+### max()
+
+```python
+print(max(1, 2, 3))  # 3
+```
+
+```python
+print(max([1, 2, 3]))  # 3
+```
+
+```python
+isimler = ['ahmet', 'can', 'mehmet', 'selin', 'abdullah', 'kezban']
+print(max(isimler, key=len))  # 'abdullah'
+```
+
+```python
+def en_yüksek_rütbe(rütbe):
+    rütbeler = {
+        'er': 0,
+        'onbaşı': 1,
+        'çavuş': 2,
+        'asteğmen': 3,
+        'teğmen': 4,
+        'üsteğmen': 5,
+        'yüzbaşı': 6,
+        'binbaşı': 7,
+        'yarbay': 8,
+        'albay': 9
+    }
+
+    return rütbeler[rütbe]
+
+
+askerler = {
+    'mehmet': 'onbaşı',
+    'ali': 'teğmen',
+    'cevat': 'yüzbaşı',
+    'berkay': 'albay',
+    'mahmut': 'üsteğmen',
+    'ahmet': 'binbaşı'
+}
+
+print(max(askerler.values(), key=en_yüksek_rütbe))  # binbaşı
+```
+
+### min() (!max())
+
+```python
+print(min([1, 2, 3]))  # 1
+```
+
+### open()
+
+```python
+open("text.txt", mode='w', buffering=-1, encoding=None,
+     errors=None, newline=None, closefd=True, opener=None)
+```
+
+### pow()
+
+```python
+print(pow(2, 3))  # 8
+print(pow(2, 3) == 2 ** 3)  # True
+```
+
+```python
+print(pow(2, 3, 2))  # 0
+print(pow(2, 3, 2) == (2 ** 3 % 2))  # True
+```
+
+### quit()
+
+```python
+'''
+exits the running system code 
+'''
+```
+
+### reversed()
+
+```python
+isimler = ['ahmet', 'mehmet', 'veli', 'ayşe', 'çiğdem', 'ışık']
+print(*reversed(isimler))  # ışık çiğdem ayşe veli mehmet ahmet
+print(list(reversed(isimler)))  # ['ışık', 'çiğdem', 'ayşe', 'veli', 'mehmet', 'ahmet']
+```
+
+### sorted()
+
+```python
+print(sorted('ahmet'))  # ['a', 'e', 'h', 'm', 't']
+print(sorted(('elma', 'armut', 'kiraz', 'badem')))  # ['armut', 'badem', 'elma', 'kiraz']
+print(sorted(['elma', 'armut', 'kiraz', 'badem']))  # ['armut', 'badem', 'elma', 'kiraz']
+```
+
+### slice()
+
+```python
+l = ['ahmet', 'mehmet', 'ayşe', 'senem', 'salih']
+dl = slice(0, 3)
+
+print(l[dl])  # ['ahmet', 'mehmet', 'ayşe']
+
+'''
+slice(start, end, skip)
+'''
+```
+
+### sum()
+
+```python
+l = [1, 2, 3]
+print(sum(l))  # 6
+print(sum(l, 10))  # 16
+```
+
+### type()
+
+```python
+print(type('apple'))  # <class 'str'>
+```
+
+### zip()
+
+```python
+a1 = ['a', 'b', 'c']
+a2 = ['d', 'e', 'f']
+
+print(zip(a1, a2))  # <zip object at 0x7f1b99ba7580>
+print(*zip(a1, a2))  # ('a', 'd') ('b', 'e') ('c', 'f')
+```
+
+### vars()
+
+```python
+print(vars())
+
+'''
+{'__name__': '__main__', '__doc__': None, '__package__': None, 
+'__loader__': <_frozen_importlib_external.SourceFileLoader object at 0x7f4ee56904c0>, 
+'__spec__': None, '__annotations__': {}, '__builtins__': <module 'builtins' (built-in)>, 
+'__file__': 'main.py', '__cached__': None}
+'''
+```
+
+## `lambda functions`
+
+```python
+def f(param1, param2):
+    return param1 + param2
+```
+
+##### converted to `lambda`:
+
+```python
+f = lambda param1, param2: param1 + param2
+```
+
+```python
+harfler = "abcçdefgğhıijklmnoöprsştuüvyz"
+
+çevrim = {i: harfler.index(i) for i in harfler}
+
+isimler = ["ahmet", "ışık", "ismail", "çiğdem",
+           "can", "şule", "iskender"]
+
+print(
+    sorted(isimler, key=lambda x: çevrim.get(x[0])))  # ['ahmet', 'can', 'çiğdem', 'ışık', 'ismail', 'iskender', 'şule']
+```
+
+```python
+is_even = lambda x: x % 2 == 0
+
+print(is_even(4))  # True 
+```
+
+```python
+print(*map(lambda x: x ** 2, [1, 2, 3, 4, 5]))  # 1 4 9 16 25
+```
+
+## `recursive`
+
+```python
+def düz_liste_yap(liste):
+    if not isinstance(liste, list):
+        return [liste]
+    elif not liste:
+        return []
+    else:
+        return düz_liste_yap(liste[0]) + düz_liste_yap(liste[1:])
+
+
+l = [1, 2, 3, [[[4], 5], 6], [7, 8, 9, [10, 11], 12], 13, 14]
+print(düz_liste_yap(l))  # [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+```
+
+## `nested functions`
+
+```python
+def f():
+    def y(x):
+        print(x)
+
+    return y
+
+
+new_f = f()
+new_f(1)  # 1
+```
+
+```python
+def f():
+    def y(x):
+        print(x)
+
+        def z(y):
+            print(y)
+
+        return z
+
+    return y
+
+
+new_f = f()
+new_f(5)  # 5 
+new_f(5)(6)  # 5 6
+```
+
+```python
+a = 3
+
+def f():
+    global a
+    def y(x=1):
+        print(x)
+        print(a)
+
+        def z(y=2):
+            print(y)
+            print(a)
+
+        return z
+
+    return y
+
+new_f = f()
+new_f()  # 1 3
+new_f()()  # 2 3
+```
+
+```python
+def f():
+    a = 5
+    def y(x=1):
+        print("y")
+
+        def z(y=2):
+            nonlocal a
+            print("z")
+            print(a)
+        
+        return z
+    return y
+
+new_f = f()
+new_f()()  # y z 5
+```
+
+## `generators`
+
+```python
+a = 5
+
+def fonksiyon_sayıcı():
+
+    def say():
+        global a
+        a += 1
+        return a
+    
+    return say
+
+
+def üreteç_sayıcı():
+    sayı = 0
+    
+    while True:
+        sayı += 1
+        yield sayı
+
+
+f = üreteç_sayıcı()
+print(next(f))  # 1
+print(next(f))  # 2
+print(next(f))  # 3
+print(next(f))  # 4
+print(next(f))  # 5
+print(next(f))  # 6
+```
+
+```python
+def f():
+    yield 1
+    yield 2
+    yield 3
+
+f = f()
+
+print(next(f))  # 1
+print(next(f))  # 2
+print(next(f))  # 3
+```
+
+```python
+def f():
+    print("1st next here!")
+    yield 1
+
+    print("2nd next here!")
+    yield 2
+
+    print("3rd next here!")
+    yield 3
+
+f = f()
+
+print(next(f))  # 1st next here! 1
+print(next(f))  # 2nd next here! 2
+print(next(f))  # 3rd next here! 3
+```
+
+```python
+def f():
+    c = 0
+    x, y, z = 1, 0, 0
+
+    while True:
+        z = y
+        y = x
+        x = y + z
+          
+        yield x
+
+        c += 1
+
+        if c > 10:
+            return
+
+f = f()
+for i in f:
+    print(i)
+    
+"""
+1
+2
+3
+5
+8
+13
+21
+34
+55
+89
+144
+""" 
+```
+
+```python
+def üreteç1():
+    yield "üreteç1 başladı"
+    yield "üreteç1 bitti"
+
+def üreteç2():
+    yield "üreteç2 başladı"
+    yield from üreteç1()
+    yield "üreteç2 bitti"
+
+ur2 = üreteç2()
+
+print(*ur2, sep="\n")
+"""
+üreteç2 başladı
+üreteç1 başladı
+üreteç1 bitti
+üreteç2 bitti
+"""
+```
+
+```python
+def üreteç1():
+    yield "üreteç1 başladı"
+    yield "üreteç1 bitti"
+
+def üreteç2():
+    yield "üreteç2 başladı"
+    yield next(üreteç1())
+    yield "üreteç2 bitti"
+
+ur2 = üreteç2()
+
+print(*ur2, sep="\n")
+"""
+üreteç2 başladı
+üreteç1 başladı
+üreteç2 bitti
+"""
+```
+
+```python
+def üreteç1():
+    yield "üreteç1 başladı"
+    yield "üreteç1 bitti"
+
+ur1 = üreteç1()
+    
+def üreteç2():
+    yield "üreteç2 başladı"
+    yield next(ur1)
+    yield next(ur1)
+    yield "üreteç2 bitti"
+
+ur2 = üreteç2()
+
+print(*ur2, sep="\n")
+"""
+üreteç2 başladı
+üreteç1 başladı
+üreteç1 bitti
+üreteç2 bitti
+"""
+```
