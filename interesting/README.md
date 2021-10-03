@@ -133,4 +133,22 @@ print(r"sa" + "\t" + "sa") # sa    sa
 
 ![escape characters list](src/1.png)
 
+```python
+import os
 
+def get_user_os():
+    # linux/macos returns True else False
+    return os.name == "posix"
+```
+
+```python
+import subprocess
+
+subprocess.call("gnome-terminal")
+```
+
+```python
+import webbrowser as web
+
+web.open("www.youtube.com")
+```

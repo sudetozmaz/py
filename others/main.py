@@ -1,23 +1,35 @@
-#samet sarıal 64170037 COE 
+# import webbrowser as web
+#
+# web.open("www.youtube.com")
 
-word = "ita"
-WORDS = list(word)
-substrings = [""]
+# import subprocess
+#
+# print(str(subprocess.call("ifconfig")).split())
 
+# import subprocess
+#
+# subprocess.call("gnome-terminal")
 
-def recursiveGen(word, WORDS, substrings):
+#samet sarıal 64170037 COE
 
-    for i in range(0, len(word)):
-        for j in range(i, len(word)):
-            theWord = (word[i:j+1])
-            substrings.append(theWord)
-
-            if theWord[::-1] not in substrings:
-                substrings.append(theWord[::-1])
-
-    lastList = substrings
-
-
-
-recursiveGen(word, WORDS, substrings)
-print(substrings,end=" ")
+# word = "ita"
+# WORDS = list(word)
+# substrings = [""]
+#
+#
+# def recursiveGen(word, WORDS, substrings):
+#
+#     for i in range(0, len(word)):
+#         for j in range(i, len(word)):
+#             theWord = (word[i:j+1])
+#             substrings.append(theWord)
+#
+#             if theWord[::-1] not in substrings:
+#                 substrings.append(theWord[::-1])
+#
+#     lastList = substrings
+#
+#
+#
+# recursiveGen(word, WORDS, substrings)
+# print(substrings,end=" ")

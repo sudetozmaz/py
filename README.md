@@ -2257,8 +2257,10 @@ new_f(5)(6)  # 5 6
 ```python
 a = 3
 
+
 def f():
     global a
+
     def y(x=1):
         print(x)
         print(a)
@@ -2271,6 +2273,7 @@ def f():
 
     return y
 
+
 new_f = f()
 new_f()  # 1 3
 new_f()()  # 2 3
@@ -2279,6 +2282,7 @@ new_f()()  # 2 3
 ```python
 def f():
     a = 5
+
     def y(x=1):
         print("y")
 
@@ -2286,9 +2290,11 @@ def f():
             nonlocal a
             print("z")
             print(a)
-        
+
         return z
+
     return y
+
 
 new_f = f()
 new_f()()  # y z 5
@@ -2299,19 +2305,19 @@ new_f()()  # y z 5
 ```python
 a = 5
 
-def fonksiyon_sayıcı():
 
+def fonksiyon_sayıcı():
     def say():
         global a
         a += 1
         return a
-    
+
     return say
 
 
 def üreteç_sayıcı():
     sayı = 0
-    
+
     while True:
         sayı += 1
         yield sayı
@@ -2332,6 +2338,7 @@ def f():
     yield 2
     yield 3
 
+
 f = f()
 
 print(next(f))  # 1
@@ -2350,6 +2357,7 @@ def f():
     print("3rd next here!")
     yield 3
 
+
 f = f()
 
 print(next(f))  # 1st next here! 1
@@ -2366,7 +2374,7 @@ def f():
         z = y
         y = x
         x = y + z
-          
+
         yield x
 
         c += 1
@@ -2374,10 +2382,11 @@ def f():
         if c > 10:
             return
 
+
 f = f()
 for i in f:
     print(i)
-    
+
 """
 1
 2
@@ -2398,10 +2407,12 @@ def üreteç1():
     yield "üreteç1 başladı"
     yield "üreteç1 bitti"
 
+
 def üreteç2():
     yield "üreteç2 başladı"
     yield from üreteç1()
     yield "üreteç2 bitti"
+
 
 ur2 = üreteç2()
 
@@ -2418,12 +2429,14 @@ print(*ur2, sep="\n")
 def üreteç1():
     yield "üreteç1 başladı"
     yield "üreteç1 bitti"
+
 
 def üreteç2():
     yield "üreteç2 başladı"
     yield next(üreteç1())
     yield "üreteç2 bitti"
 
+
 ur2 = üreteç2()
 
 print(*ur2, sep="\n")
@@ -2439,13 +2452,16 @@ def üreteç1():
     yield "üreteç1 başladı"
     yield "üreteç1 bitti"
 
+
 ur1 = üreteç1()
-    
+
+
 def üreteç2():
     yield "üreteç2 başladı"
     yield next(ur1)
     yield next(ur1)
     yield "üreteç2 bitti"
+
 
 ur2 = üreteç2()
 
@@ -2457,3 +2473,478 @@ print(*ur2, sep="\n")
 üreteç2 bitti
 """
 ```
+
+## `function decorators`
+
+```python
+def f(x):
+    print("Bu f fonksiyonudur!")
+    x()
+
+
+def y():
+    print("Bu y fonksiyonudur")
+
+
+f(y)
+
+"""
+Bu f fonksiyonudur!
+Bu y fonksiyonudur
+"""
+```
+
+```python
+def z():
+    print("Bu z fonksiyonudur!")
+
+    def nested():
+        print("Bu icerideki fonskiyondur!")
+
+    nested()
+
+
+z()
+
+"""
+Bu z fonksiyonudur!
+Bu icerideki fonskiyondur!
+"""
+```
+
+```python
+def decor(x):
+    def wrapper():
+        print("wrapper started")
+        x()
+        print("wrapper ended")
+
+    return wrapper
+
+
+def hello():
+    print('hello, world!')
+
+
+d = decor(hello)
+d()
+
+"""
+wrapper started
+hello, world!
+wrapper ended
+"""
+```
+
+```python
+def decor(x):
+    def wrapper():
+        print("wrapper started")
+        x()
+        print("wrapper ended")
+
+    return wrapper()
+
+
+def hello():
+    print('hello, world!')
+
+
+decor(hello)
+
+"""
+wrapper started
+hello, world!
+wrapper ended
+"""
+```
+
+## `oop`
+
+### @classmethod
+
+```python
+from datetime import date
+
+
+# random Person
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    @classmethod
+    def from_birth_year(cls, name, birth_year):
+        return cls(name, date.today().year - birth_year)
+
+    def display(self):
+        print(self.name + "'s age is: " + str(self.age))
+
+
+person = Person('Adam', 19)
+person.display()
+
+person1 = Person.from_birth_year('John', 1985)
+person1.display()
+
+"""
+Adam's age is: 19
+John's age is: 36
+"""
+```
+
+```python
+from datetime import date
+
+
+# random Person
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    @staticmethod
+    def fromFathersAge(name, fatherAge, fatherPersonAgeDiff):
+        return Person(name, date.today().year - fatherAge + fatherPersonAgeDiff)
+
+    @classmethod
+    def fromBirthYear(cls, name, birthYear):
+        return cls(name, date.today().year - birthYear)
+
+    def display(self):
+        print(self.name + "'s age is: " + str(self.age))
+
+
+class Man(Person):
+    sex = 'Male'
+
+
+man = Man.fromBirthYear('John', 1985)
+print(isinstance(man, Man))
+
+man1 = Man.fromFathersAge('John', 1965, 20)
+print(isinstance(man1, Man))
+print(isinstance(man1, Person))
+
+"""
+True
+False
+True
+"""
+```
+
+### @staticmethod
+
+```python
+class Mathematics:
+
+    def addNumbers(x, y):
+        return x + y
+
+
+# create addNumbers static method
+Mathematics.addNumbers = staticmethod(Mathematics.addNumbers)
+
+print('The sum is:', Mathematics.addNumbers(5, 10))
+
+"""
+The sum is: 15
+"""
+```
+
+```python
+class Dates:
+    def __init__(self, date):
+        self.date = date
+
+    def getDate(self):
+        return self.date
+
+    @staticmethod
+    def toDashDate(date):
+        return date.replace("/", "-")
+
+
+date = Dates("15-12-2016")
+dateFromDB = "15/12/2016"
+dateWithDash = Dates.toDashDate(dateFromDB)
+
+if (date.getDate() == dateWithDash):
+    print("Equal")
+else:
+    print("Unequal")
+
+"""
+Equal
+"""
+```
+
+```python
+class Dates:
+    def __init__(self, date):
+        self.date = date
+
+    def getDate(self):
+        return self.date
+
+    @staticmethod
+    def toDashDate(date):
+        return date.replace("/", "-")
+
+
+class DatesWithSlashes(Dates):
+    def getDate(self):
+        return Dates.toDashDate(self.date)
+
+
+date = Dates("15-12-2016")
+dateFromDB = DatesWithSlashes("15/12/2016")
+
+if (date.getDate() == dateFromDB.getDate()):
+    print("Equal")
+else:
+    print("Unequal")
+
+"""
+Equal
+"""
+```
+
+## @property
+
+```python
+# Using @property decorator
+class Celsius:
+    def __init__(self, temperature=0):
+        self.temperature = temperature
+
+    def to_fahrenheit(self):
+        return (self.temperature * 1.8) + 32
+
+    @property
+    def temperature(self):
+        print("Getting value...")
+        return self._temperature
+
+    @temperature.setter
+    def temperature(self, value):
+        print("Setting value...")
+        if value < -273.15:
+            raise ValueError("Temperature below -273 is not possible")
+        self._temperature = value
+
+
+# create an object
+human = Celsius(37)
+
+print(human.temperature)
+
+print(human.to_fahrenheit())
+
+coldest_thing = Celsius(-300)
+
+"""
+Setting value...
+Getting value...
+37
+Getting value...
+98.60000000000001
+Setting value...
+Traceback (most recent call last):
+  File "<string>", line 29, in <module>
+  File "<string>", line 4, in __init__
+  File "<string>", line 18, in temperature
+ValueError: Temperature below -273 is not possible
+"""
+```
+
+## `__new__`
+
+```python
+class Sınıf():
+    def __new__(cls, *args, **kwargs):
+        return object.__new__(cls, *args, **kwargs)
+```
+
+## `RegEx`
+
+### match()
+
+##### == startswith()
+
+```python
+import re
+
+a = "python güçlü bir programlama dilidir."
+print(re.match("python", a))
+
+"""
+<re.Match object; span=(0, 6), match='python'>
+"""
+
+print(re.match("Java", a))
+
+"""
+None
+"""
+```
+
+### search()
+
+```python
+import re
+
+a = "python güçlü bir programlama dilidir."
+print(re.search('python', a))  # <re.Match object; span=(0, 6), match='python'>
+```
+
+```python
+import re
+
+a = "güçlü bir programlama dilidir python."
+print(re.search('python', a))  # <re.Match object; span=(30, 36), match='python'>
+```
+
+### findall()
+
+```python
+import re
+
+a = """Guido Van Rossum Python'ı geliştirmeye 1990 yılında başlamış... Yani
+aslında Python için nispeten yeni bir dil denebilir. Ancak Python'un çok uzun
+bir geçmişi olmasa da, bu dil öteki dillere kıyasla kolay olması, hızlı olması,
+ayrı bir derleyici programa ihtiyaç duymaması ve bunun gibi pek çok nedenden
+ötürü çoğu kimsenin gözdesi haline gelmiştir. Ayrıca Google'ın da Python'a özel
+bir önem ve değer verdiğini, çok iyi derecede Python bilenlere iş olanağı
+sunduğunu da hemen söyleyelim. Mesela bundan kısa bir süre önce Python'ın
+yaratıcısı Guido Van Rossum Google'de işe başladı..."""
+
+print(re.findall('Python', a))  # ['Python', 'Python', 'Python', 'Python', 'Python', 'Python']
+```
+
+## metacharacters
+
+```python
+import re
+
+a = ["özcan", "mehmet", "süleyman", "selim", "kemal", "özkan", "esra", "dündar", "esin", "esma", "özhan", "özlem"]
+
+for i in a:
+    if re.search('öz[chk]an', i):
+        print(re.search('öz[chk]an', i).group(), end=" ")  # özcan özkan özhan
+```
+
+```python
+import re
+
+a = ["23BH56","TY76Z","4Y7UZ","TYUDZ","34534"]
+
+for i in a:
+    res = re.match("[0-9]", i)
+    
+    if res:
+        print(res)
+
+"""
+<re.Match object; span=(0, 1), match='2'>
+<re.Match object; span=(0, 1), match='4'>
+<re.Match object; span=(0, 1), match='3'>
+"""
+```
+
+```python
+import re
+
+a = ["özcan", "mehmet", "süleyman", "selim", "kemal", "özkan", "esra", "dündar", "esin", "esma", "özhan", "özlem"]
+
+for i in a:
+    res = re.match("es.a", i)
+
+    if res:
+        print(res.group())
+
+"""
+esra
+esma
+"""
+```
+
+
+##### == endswith()
+```python
+import re
+
+a = ["ahmet","kemal", "kamil", "mehmet"]
+
+for i in a:
+    res = re.match(".*met", i)
+
+    if res:
+        print(res.group())
+
+"""
+ahmet
+mehmet
+"""
+```
+
+```python
+import re
+
+a = "python güçlü bir dildir"
+
+print(re.search(".*güçlü", a))
+
+"""
+<re.Match object; span=(0, 12), match='python güçlü'>
+"""
+```
+
+### +
+```python
+import re
+
+liste = ["ahmet", "mehmet", "met", "kezban"]
+
+for i in liste:
+    res = re.match(".+met", i)
+
+    if res:
+        print(res.group())
+
+"""
+ahmet
+mehmet
+"""
+```
+
+```python
+import re
+
+yeniliste = ["st", "sat", "saat", "saaat", "falanca"]
+for i in yeniliste:
+    if re.match("sa+t",i):
+        print(i)
+
+"""
+sat
+saat
+saaat
+"""
+```
+
+# Important Libraries:
+### `RegEx`
+### `datetime`
+### `math`
+### `random`
+### `Sqlite`
+### `os`
+### `time`
+### `curses`
+### `threading`
+### `sched`
+### `json`
+### `timeit`
+### `sys`
+### `argparse`
