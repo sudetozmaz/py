@@ -1,3 +1,9 @@
+<div align="center">
+    <img src="src/logo.png" />
+    <h1>py</h1>
+    <h3>🐍 my python adventure goes here.<h3>
+</div>
+
 # [blog](https://www.woosal.com/)
 
 # [codes](/main/)
