@@ -1,16 +1,13 @@
 <div align="center">
-    <img src="src/logo.png" />
     <h1>py</h1>
     <h3>🐍 my python adventure goes here.<h3>
 </div>
+        
+<div align="center">
+ <h4>| <a href="http://woosal/hns.to/">blog</a> | <a href="/main/">codes</a> | <a href="/others/">others</a> |
+</div>
 
-# [blog](https://www.woosal.com/)
 
-# [codes](/main/)
-
-# [others](/others/)
-
-# ▬▬ι═══════ﺤ
 
 ## `print()`
 
