@@ -1,6 +1,6 @@
 <div align="center">
     <h1>Python</h1>
-    <h3>🐍 My Python dventure goes here.<h3>
+    <h3>🐍 My Python adventure goes here.<h3>
 </div>
         
 <br>
